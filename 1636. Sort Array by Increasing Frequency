@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> frequencySort(vector<int>& nums) {
+      sort(nums.begin(),nums.end(),greater<int>());
+        multimap<int,int> mp;
+        for(int i=0;i<nums.size();i++){
+            int c= helper(nums,nums[i]);
+            mp.insert({c,nums[i]});
+        }
+      vector<int> ans;
+        for(auto it:mp){
+            ans.push_back(it.second);
+        }
+        return ans;
+    }
+    
+    
+    int helper(vector<int>& nums,int a){
+        int c=0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==a)
+                c++;
+        }
+        return c;
+    }
+};
